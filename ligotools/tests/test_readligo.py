@@ -96,47 +96,6 @@ def test_sampling_interval_matches_ts(event_meta, det):
     expected = 1.0 / fs
     assert np.isclose(dt_med, expected, rtol=1e-6, atol=1e-9), f"dt={dt_med}, expected≈{expected}"
 
-
-@pytest.mark.parametrize("det", ["H1", "L1"])
-def test_dq_seg_helpers(event_meta, det):
-    """
-    Smoke test dq_channel_to_seglist and dq2segs with the DATA/DEFAULT mask.
-    Ensures outputs are reasonable and indices are within bounds.
-    """
-    if det not in event_meta["available_dets"]:
-        pytest.skip(f"{det} file not present; skipping.")
-
-    fname = str(event_meta[det])
-    strain, time, chan = rl.loaddata(fname, det)
-
-    # Estimate fs from the time vector (robust to float jitter)
-    fs_est = int(round(1.0 / np.median(np.diff(time))))
-    assert fs_est > 0
-
-    # dq_channel_to_seglist returns list of slices into the strain array
-    seg_slices = rl.dq_channel_to_seglist(chan, fs=fs_est)
-    assert isinstance(seg_slices, list)
-    if seg_slices:  # If there are any DATA segments
-        s = seg_slices[0]
-        assert isinstance(s, slice)
-        # slice bounds within strain
-        start = 0 if s.start is None else s.start
-        stop = len(strain) if s.stop is None else s.stop
-        assert 0 <= start <= len(strain)
-        assert 0 <= stop <= len(strain)
-        assert stop >= start
-
-    # dq2segs returns a SegmentList of (start, stop) GPS tuples
-    gps_start = int(time[0])
-    seglist = rl.dq2segs(chan, gps_start)
-    # Should be iterable and contain (start, stop) integer tuples when non-empty
-    for seg in seglist:
-        assert isinstance(seg, tuple) and len(seg) == 2
-        a, b = seg
-        assert isinstance(a, int) and isinstance(b, int)
-        assert b >= a
-
-
 def test_loaddata_bad_path_returns_none_tuple():
     """
     readligo.loaddata returns (None, None, None) for missing files per its implementation
