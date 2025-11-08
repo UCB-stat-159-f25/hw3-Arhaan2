@@ -9,9 +9,7 @@ This repository contains my submission for **HW3**, which focuses on converting 
 
 Click below to run the notebook interactively in your browser:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCB-stat-159-f25
-hw3-Arhaan2/HEAD?urlpath=lab/tree/LOSC_Event_tutorial.ipynb)
-
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCB-stat-159-f25/hw3-Arhaan2.git/main?urlpath=%2Fdoc%2Ftree%2Fhttps%3A%2F%2Fgithub.com%2FUCB-stat-159-f25%2Fhw3-Arhaan2%2Fblob%2Fmain%2FLOSC_Event_tutorial.ipynb)
 
 ---
 

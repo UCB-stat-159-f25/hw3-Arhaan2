@@ -1,1 +1,1 @@
-No AI was used in this project. Also Jimmy is the GOAT.
+ChatgPT was used to generate tests for the 2 test files I had to create. Also Jimmy is the GOAT.
