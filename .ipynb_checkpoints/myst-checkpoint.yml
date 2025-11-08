@@ -1,0 +1,15 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 27ae2c1d-556e-4f17-a77a-61b05f59a8cb
+  # title:Stats 159/259 HW3 — LIGO Tools
+  # description:
+  # keywords: []
+  # authors: [Arhaan Aggarwal]
+  github: https://github.com/UCB-stat-159-f25/hw3-Arhaan2
+  # To autogenerate a Table of Contents, run "myst init --write-toc"
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
